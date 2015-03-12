@@ -1,17 +1,16 @@
 //
-//  ObjC_DAAlertView.m
+//  ObjC_EXAlertView.m
 //  DAAlertController
 //
 //  Objective-C code Copyright (c) 2015 FactoralComplexity. By Daria Kopaliani. All rights reserved.
 //  Swift adaptation Copyright (c) 2015 Nicolas Gomollon. All rights reserved.
 //
 
-#import "ObjC_DAAlertView.h"
-#import "DAAlertController-Swift.h"
+#import "ObjC_EXAlertView.h"
 
 #define itemAt(array, index) ((array.count > index) ? array[index] : nil)
 
-@implementation ObjC_DAAlertView
+@implementation ObjC_EXAlertView
 
 - (instancetype)initWithTitle:(NSString *)title message:(NSString *)message delegate:(id<UIAlertViewDelegate>)delegate cancelButtonTitle:(NSString *)cancelButtonTitle otherButtonTitles:(NSArray *)otherButtonTitles {
 	/*

@@ -1,5 +1,5 @@
 //
-//  ObjC_DAAlertView.h
+//  ObjC_EXAlertView.h
 //  DAAlertController
 //
 //  Objective-C code Copyright (c) 2015 FactoralComplexity. By Daria Kopaliani. All rights reserved.
@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-@interface ObjC_DAAlertView: UIAlertView
+@interface ObjC_EXAlertView: UIAlertView
 
 - (instancetype)initWithTitle:(NSString *)title message:(NSString *)message delegate:(id<UIAlertViewDelegate>)delegate cancelButtonTitle:(NSString *)cancelButtonTitle otherButtonTitles:(NSArray *)otherButtonTitles;
 

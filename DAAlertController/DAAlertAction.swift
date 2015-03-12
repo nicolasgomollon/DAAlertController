@@ -21,7 +21,6 @@ public class DAAlertAction: NSObject {
 	public var style: DAAlertActionStyle
 	public var handler: (() -> Void)?
 	
-	
 	public init(title: String, style: DAAlertActionStyle, handler: (() -> Void)? = nil) {
 		self.title = title
 		self.style = style
@@ -35,6 +34,26 @@ extension DAAlertAction: NSCopying {
 	
 	public func copyWithZone(zone: NSZone) -> AnyObject {
 		return DAAlertAction(title: title, style: style, handler: handler)
+	}
+	
+}
+
+@objc(DAAlertFieldAction)
+public class DAAlertFieldAction: DAAlertAction {
+	
+	public var textFieldHandler: ((Array<UITextField>) -> Void)?
+	
+	public init(title: String, style: DAAlertActionStyle, textFieldHandler: ((Array<UITextField>) -> Void)? = nil) {
+		self.textFieldHandler = textFieldHandler
+		super.init(title: title, style: style)
+	}
+	
+}
+
+extension DAAlertFieldAction: NSCopying {
+	
+	public override func copyWithZone(zone: NSZone) -> AnyObject {
+		return DAAlertFieldAction(title: title, style: style, textFieldHandler: textFieldHandler)
 	}
 	
 }

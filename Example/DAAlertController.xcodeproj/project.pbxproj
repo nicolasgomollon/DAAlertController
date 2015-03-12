@@ -15,7 +15,7 @@
 		DAB327E51AB0B2FA0035C6CA /* DAAlertControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB327E41AB0B2FA0035C6CA /* DAAlertControllerTests.swift */; };
 		DAB327EF1AB0B3730035C6CA /* DAAlertAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB327EE1AB0B3730035C6CA /* DAAlertAction.swift */; };
 		DAB327F11AB0B3C70035C6CA /* DAAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB327F01AB0B3C70035C6CA /* DAAlertController.swift */; };
-		DAB7F9811AB11A8B003D2373 /* ObjC_DAAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = DAB7F9801AB11A8B003D2373 /* ObjC_DAAlertView.m */; };
+		DAB7F9811AB11A8B003D2373 /* ObjC_EXAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = DAB7F9801AB11A8B003D2373 /* ObjC_EXAlertView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,8 +42,8 @@
 		DAB327E41AB0B2FA0035C6CA /* DAAlertControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DAAlertControllerTests.swift; sourceTree = "<group>"; };
 		DAB327EE1AB0B3730035C6CA /* DAAlertAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DAAlertAction.swift; path = ../DAAlertController/DAAlertAction.swift; sourceTree = "<group>"; };
 		DAB327F01AB0B3C70035C6CA /* DAAlertController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DAAlertController.swift; path = ../DAAlertController/DAAlertController.swift; sourceTree = "<group>"; };
-		DAB7F97F1AB11A8B003D2373 /* ObjC_DAAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ObjC_DAAlertView.h; path = ../DAAlertController/ObjC_DAAlertView.h; sourceTree = "<group>"; };
-		DAB7F9801AB11A8B003D2373 /* ObjC_DAAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ObjC_DAAlertView.m; path = ../DAAlertController/ObjC_DAAlertView.m; sourceTree = "<group>"; };
+		DAB7F97F1AB11A8B003D2373 /* ObjC_EXAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ObjC_EXAlertView.h; path = ../DAAlertController/ObjC_EXAlertView.h; sourceTree = "<group>"; };
+		DAB7F9801AB11A8B003D2373 /* ObjC_EXAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ObjC_EXAlertView.m; path = ../DAAlertController/ObjC_EXAlertView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,8 +128,8 @@
 				DAB327EE1AB0B3730035C6CA /* DAAlertAction.swift */,
 				DAB327F01AB0B3C70035C6CA /* DAAlertController.swift */,
 				DAAAE5EE1AB154D60093D91E /* DAAlertController-Bridging-Header.h */,
-				DAB7F97F1AB11A8B003D2373 /* ObjC_DAAlertView.h */,
-				DAB7F9801AB11A8B003D2373 /* ObjC_DAAlertView.m */,
+				DAB7F97F1AB11A8B003D2373 /* ObjC_EXAlertView.h */,
+				DAB7F9801AB11A8B003D2373 /* ObjC_EXAlertView.m */,
 			);
 			name = DAAlertController;
 			sourceTree = "<group>";
@@ -236,7 +236,7 @@
 			files = (
 				DAB327EF1AB0B3730035C6CA /* DAAlertAction.swift in Sources */,
 				DAB327D11AB0B2FA0035C6CA /* ViewController.swift in Sources */,
-				DAB7F9811AB11A8B003D2373 /* ObjC_DAAlertView.m in Sources */,
+				DAB7F9811AB11A8B003D2373 /* ObjC_EXAlertView.m in Sources */,
 				DAB327CF1AB0B2FA0035C6CA /* AppDelegate.swift in Sources */,
 				DAB327F11AB0B3C70035C6CA /* DAAlertController.swift in Sources */,
 			);

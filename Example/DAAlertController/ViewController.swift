@@ -35,8 +35,13 @@ class ViewController: UIViewController {
 			println("\"Not now\" button pressed.")
 			self.presentAlertController(index + 1)
 		}
-		var signUpAction = DAAlertAction(title: "Sign up", style: .Default) {
+		var signUpAction = DAAlertFieldAction(title: "Sign up", style: .Default) { (textFields: Array<UITextField>) -> Void in
 			println("\"Sign up\" button pressed.")
+			var i = 0
+			for textField in textFields {
+				println("\(i): \"\(textField.text)\"")
+				i++
+			}
 			self.presentAlertController(index + 1)
 		}
 		
@@ -61,7 +66,10 @@ class ViewController: UIViewController {
 				numberOfTextFields: 2,
 				textFieldsConfigurationHandler: { (textFields: Array<UITextField>) -> Void in
 					textFields.first?.placeholder = "Nick name"
+					textFields.first?.enablesReturnKeyAutomatically = true
 					textFields.last?.placeholder = "Full name"
+					textFields.last?.enablesReturnKeyAutomatically = true
+					textFields.last?.secureTextEntry = false
 				},
 				validationBlock: { (textFields: Array<UITextField>) -> Bool in
 					return NSString(string: textFields.first?.text ?? "").length >= 5
