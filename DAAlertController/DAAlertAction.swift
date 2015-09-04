@@ -8,6 +8,7 @@
 
 import Foundation
 
+@objc
 public enum DAAlertActionStyle: Int {
 	case Default
 	case Cancel
