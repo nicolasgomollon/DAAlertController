@@ -20,26 +20,26 @@ class ViewController: UIViewController {
 		presentAlertController()
 	}
 	
-	func presentAlertController(_ index: Int = 0) {
+	func presentAlertController(index: Int = 0) {
 		if index >= 3 { return }
 		
-		var cancelAction = DAAlertAction(title: "Cancel", style: .Cancel) {
-			println("\"Cancel\" button pressed.")
+		let cancelAction = DAAlertAction(title: "Cancel", style: .Cancel) {
+			print("\"Cancel\" button pressed.")
 			self.presentAlertController(index + 1)
 		}
-		var signOutAction = DAAlertAction(title: "Sign out", style: .Destructive) {
-			println("\"Sign out\" button pressed.")
+		let signOutAction = DAAlertAction(title: "Sign out", style: .Destructive) {
+			print("\"Sign out\" button pressed.")
 			self.presentAlertController(index + 1)
 		}
-		var notNowAction = DAAlertAction(title: "Not now", style: .Default) {
-			println("\"Not now\" button pressed.")
+		let notNowAction = DAAlertAction(title: "Not now", style: .Default) {
+			print("\"Not now\" button pressed.")
 			self.presentAlertController(index + 1)
 		}
-		var signUpAction = DAAlertFieldAction(title: "Sign up", style: .Default) { (textFields: Array<UITextField>) -> Void in
-			println("\"Sign up\" button pressed.")
+		let signUpAction = DAAlertFieldAction(title: "Sign up", style: .Default) { (textFields: Array<UITextField>) -> Void in
+			print("\"Sign up\" button pressed.")
 			var i = 0
 			for textField in textFields {
-				println("\(i): \"\(textField.text)\"")
+				print("\(i): \"\(textField.text)\"")
 				i++
 			}
 			self.presentAlertController(index + 1)

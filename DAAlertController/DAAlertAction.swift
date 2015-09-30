@@ -50,11 +50,3 @@ public class DAAlertFieldAction: DAAlertAction {
 	}
 	
 }
-
-extension DAAlertFieldAction: NSCopying {
-	
-	public override func copyWithZone(zone: NSZone) -> AnyObject {
-		return DAAlertFieldAction(title: title, style: style, textFieldHandler: textFieldHandler)
-	}
-	
-}
