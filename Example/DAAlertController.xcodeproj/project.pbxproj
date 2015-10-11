@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DA1E67761BCB24B300A5F83F /* UIAlertController+Window.m in Sources */ = {isa = PBXBuildFile; fileRef = DA1E67751BCB24B300A5F83F /* UIAlertController+Window.m */; settings = {ASSET_TAGS = (); }; };
 		DAB327CF1AB0B2FA0035C6CA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB327CE1AB0B2FA0035C6CA /* AppDelegate.swift */; };
 		DAB327D11AB0B2FA0035C6CA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB327D01AB0B2FA0035C6CA /* ViewController.swift */; };
 		DAB327D41AB0B2FA0035C6CA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DAB327D21AB0B2FA0035C6CA /* Main.storyboard */; };
@@ -29,6 +30,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DA1E67741BCB24B300A5F83F /* UIAlertController+Window.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIAlertController+Window.h"; path = "../DAAlertController/UIAlertController+Window.h"; sourceTree = "<group>"; };
+		DA1E67751BCB24B300A5F83F /* UIAlertController+Window.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIAlertController+Window.m"; path = "../DAAlertController/UIAlertController+Window.m"; sourceTree = "<group>"; };
 		DAAAE5EE1AB154D60093D91E /* DAAlertController-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "DAAlertController-Bridging-Header.h"; path = "../DAAlertController/DAAlertController-Bridging-Header.h"; sourceTree = "<group>"; };
 		DAB327C91AB0B2FA0035C6CA /* DAAlertController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DAAlertController.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAB327CD1AB0B2FA0035C6CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -130,6 +133,8 @@
 				DAAAE5EE1AB154D60093D91E /* DAAlertController-Bridging-Header.h */,
 				DAB7F97F1AB11A8B003D2373 /* ObjC_EXAlertView.h */,
 				DAB7F9801AB11A8B003D2373 /* ObjC_EXAlertView.m */,
+				DA1E67741BCB24B300A5F83F /* UIAlertController+Window.h */,
+				DA1E67751BCB24B300A5F83F /* UIAlertController+Window.m */,
 			);
 			name = DAAlertController;
 			sourceTree = "<group>";
@@ -238,6 +243,7 @@
 			files = (
 				DAB327EF1AB0B3730035C6CA /* DAAlertAction.swift in Sources */,
 				DAB327D11AB0B2FA0035C6CA /* ViewController.swift in Sources */,
+				DA1E67761BCB24B300A5F83F /* UIAlertController+Window.m in Sources */,
 				DAB7F9811AB11A8B003D2373 /* ObjC_EXAlertView.m in Sources */,
 				DAB327CF1AB0B2FA0035C6CA /* AppDelegate.swift in Sources */,
 				DAB327F11AB0B3C70035C6CA /* DAAlertController.swift in Sources */,

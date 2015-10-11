@@ -128,7 +128,7 @@ public class DAAlertController: NSObject {
 		}
 	}
 	
-	public class func showAlertView(viewController: UIViewController, title: String?, message: String?, actions: Array<DAAlertAction>?, numberOfTextFields: Int = 0, textFieldsConfigurationHandler configurationHandler: ((Array<UITextField>) -> Void)? = nil, validationBlock: ((Array<UITextField>) -> Bool)? = nil) {
+	public class func showAlertView(viewController: UIViewController? = nil, title: String?, message: String?, actions: Array<DAAlertAction>?, numberOfTextFields: Int = 0, textFieldsConfigurationHandler configurationHandler: ((Array<UITextField>) -> Void)? = nil, validationBlock: ((Array<UITextField>) -> Bool)? = nil) {
 		if #available(iOS 8.0, *) {
 			DAAlertController.defaultAlertController.currentAlertController = EXAlertController(title: title, message: message, preferredStyle: .Alert)
 			if let alertController = DAAlertController.defaultAlertController.currentAlertController {
@@ -180,7 +180,11 @@ public class DAAlertController: NSObject {
 						}
 					}
 				}
-				viewController.presentViewController(alertController, animated: true, completion: nil)
+				if let viewController = viewController {
+					viewController.presentViewController(alertController, animated: true, completion: nil)
+				} else {
+					alertController.show()
+				}
 			}
 		} else {
 			// Fallback on earlier versions
