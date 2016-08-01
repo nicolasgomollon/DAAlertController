@@ -40,7 +40,7 @@ class ViewController: UIViewController {
 			var i = 0
 			for textField in textFields {
 				print("\(i): \"\(textField.text)\"")
-				i++
+				i += 1
 			}
 			self.presentAlertController(index + 1)
 		}

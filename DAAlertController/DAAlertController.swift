@@ -239,11 +239,11 @@ extension DAAlertController {
 			for action in actions {
 				switch action.style {
 				case .Default:
-					defaultActionsCount++
+					defaultActionsCount += 1
 				case .Cancel:
-					cancelActionsCount++
+					cancelActionsCount += 1
 				case .Destructive:
-					destructiveActionsCount++
+					destructiveActionsCount += 1
 				}
 			}
 		}
