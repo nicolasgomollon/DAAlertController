@@ -219,6 +219,14 @@ public class DAAlertController: NSObject {
 		}
 	}
 	
+	public class func dismissAlertView() {
+		if #available(iOS 8.0, *) {
+			DAAlertController.defaultAlertController.currentAlertController?.dismissViewControllerAnimated(true, completion: nil)
+		} else {
+			DAAlertController.defaultAlertController.currentAlertView?.dismissWithClickedButtonIndex(0, animated: true)
+		}
+	}
+	
 }
 
 extension DAAlertController {
