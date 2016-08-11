@@ -250,10 +250,10 @@ extension DAAlertController {
 		assert(defaultActionsCount <= 10, "DAAlertController can have up to 10 actions with a style of DAAlertActionStyle.Default; if you need to have more, please, consider using another control")
 		assert(cancelActionsCount <= 1, "DAAlertController can only have one action with a style of DAAlertActionStyle.Cancel")
 		if cancelActionsCount == 0 {
-			print("UIActionSheet might not be rendered properly for iOS 7.* if you do not specify an action with a style of DAAlertActionStyle.Cancel");
+			print("UIActionSheet might not be rendered properly for iOS 7.* if you do not specify an action with a style of DAAlertActionStyle.Cancel")
 		}
 		if destructiveActionsCount > 1 {
-			var destructiveActionsString = "";
+			var destructiveActionsString = ""
 			var firstDestructiveAction: DAAlertAction?
 			for action in actions! {
 				if action.style == .Destructive {
