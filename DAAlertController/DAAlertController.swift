@@ -76,6 +76,7 @@ public class DAAlertController: NSObject {
 	}
 	
 	private var currentAlertView: EXAlertView?
+	private var currentActionSheet: EXActionSheet?
 	
 	
 	public class func showAlert(style: DAAlertControllerStyle, inViewController viewController: UIViewController, title: String?, message: String?, actions: Array<DAAlertAction>?) {
@@ -89,7 +90,8 @@ public class DAAlertController: NSObject {
 	
 	public class func showActionSheet(viewController: UIViewController, sourceView: UIView? = nil, barButtonItem: UIBarButtonItem? = nil, title: String?, message: String?, actions: Array<DAAlertAction>?, permittedArrowDirections: UIPopoverArrowDirection = .Any) {
 		if #available(iOS 8.0, *) {
-			let alertController = UIAlertController(title: title, message: message, preferredStyle: .ActionSheet)
+			DAAlertController.defaultAlertController.currentAlertController = EXAlertController(title: title, message: message, preferredStyle: .ActionSheet)
+			guard let alertController = DAAlertController.defaultAlertController.currentAlertController else { return }
 			if let actions = actions {
 				for action in actions {
 					let actualAction = UIAlertAction(title: action.title, style: UIAlertActionStyle(rawValue: action.style.rawValue)!) { (anAction: UIAlertAction) -> Void in
@@ -117,7 +119,8 @@ public class DAAlertController: NSObject {
 			// Fallback on earlier versions
 			assert(!(title ?? "").isEmpty || !(message ?? "").isEmpty || !(actions ?? Array<DAAlertAction>()).isEmpty, "DAAlertController must have a title, a message or an action to display")
 			validate(actions)
-			let actionSheet = self.actionSheet(title: title, message: message, actions: actions)
+			DAAlertController.defaultAlertController.currentActionSheet = self.actionSheet(title: title, message: message, actions: actions)
+			guard let actionSheet = DAAlertController.defaultAlertController.currentActionSheet else { return }
 			if let barButtonItem = barButtonItem {
 				actionSheet.showFromBarButtonItem(barButtonItem, animated: true)
 			} else if let sourceView = sourceView {
@@ -131,91 +134,98 @@ public class DAAlertController: NSObject {
 	public class func showAlertView(viewController: UIViewController? = nil, title: String?, message: String?, actions: Array<DAAlertAction>?, numberOfTextFields: Int = 0, textFieldsConfigurationHandler configurationHandler: ((Array<UITextField>) -> Void)? = nil, validationBlock: ((Array<UITextField>) -> Bool)? = nil) {
 		if #available(iOS 8.0, *) {
 			DAAlertController.defaultAlertController.currentAlertController = EXAlertController(title: title, message: message, preferredStyle: .Alert)
-			if let alertController = DAAlertController.defaultAlertController.currentAlertController {
-				alertController.validationBlock = validationBlock
-				var disableableActions = Set<UIAlertAction>()
-				let observers = NSMutableSet()
-				var textFields = Array<UITextField>()
-				if let actions = actions {
-					for action in actions {
-						let actualAction = UIAlertAction(title: action.title, style: UIAlertActionStyle(rawValue: action.style.rawValue)!) { (anAction: UIAlertAction) -> Void in
-							if observers.count > 0 {
-								for observer in observers {
-									NSNotificationCenter.defaultCenter().removeObserver(observer)
+			guard let alertController = DAAlertController.defaultAlertController.currentAlertController else { return }
+			alertController.validationBlock = validationBlock
+			var disableableActions = Set<UIAlertAction>()
+			let observers = NSMutableSet()
+			var textFields = Array<UITextField>()
+			if let actions = actions {
+				for action in actions {
+					let actualAction = UIAlertAction(title: action.title, style: UIAlertActionStyle(rawValue: action.style.rawValue)!) { (anAction: UIAlertAction) -> Void in
+						if observers.count > 0 {
+							for observer in observers {
+								NSNotificationCenter.defaultCenter().removeObserver(observer)
+							}
+							observers.removeAllObjects()
+						}
+						if let action = action as? DAAlertFieldAction {
+							action.textFieldHandler?(textFields)
+						} else {
+							action.handler?()
+						}
+						DAAlertController.defaultAlertController.currentAlertController = nil
+					}
+					if (validationBlock != nil) && (action.style != .Cancel) {
+						disableableActions.insert(actualAction)
+					}
+					alertController.addAction(actualAction)
+				}
+			}
+			if numberOfTextFields > 0 {
+				for _ in 0..<numberOfTextFields {
+					alertController.addTextFieldWithConfigurationHandler { (aTextField: UITextField!) -> Void in
+						textFields.append(aTextField)
+						let observer = NSNotificationCenter.defaultCenter().addObserverForName(UITextFieldTextDidChangeNotification, object: aTextField, queue: NSOperationQueue.mainQueue()) { (notification: NSNotification) -> Void in
+							if let textFieldsFilledWithValidData = validationBlock?(textFields) {
+								for disableableAction in disableableActions {
+									disableableAction.enabled = textFieldsFilledWithValidData
 								}
-								observers.removeAllObjects()
 							}
-							if let action = action as? DAAlertFieldAction {
-								action.textFieldHandler?(textFields)
-							} else {
-								action.handler?()
-							}
-							DAAlertController.defaultAlertController.currentAlertController = nil
 						}
-						if (validationBlock != nil) && (action.style != .Cancel) {
-							disableableActions.insert(actualAction)
-						}
-						alertController.addAction(actualAction)
+						observers.addObject(observer)
 					}
 				}
-				if numberOfTextFields > 0 {
-					for _ in 0..<numberOfTextFields {
-						alertController.addTextFieldWithConfigurationHandler { (aTextField: UITextField!) -> Void in
-							textFields.append(aTextField)
-							let observer = NSNotificationCenter.defaultCenter().addObserverForName(UITextFieldTextDidChangeNotification, object: aTextField, queue: NSOperationQueue.mainQueue()) { (notification: NSNotification) -> Void in
-								if let textFieldsFilledWithValidData = validationBlock?(textFields) {
-									for disableableAction in disableableActions {
-										disableableAction.enabled = textFieldsFilledWithValidData
-									}
-								}
-							}
-							observers.addObject(observer)
-						}
-					}
-					configurationHandler?(textFields)
-					textFields.last?.delegate = DAAlertController.defaultAlertController
-					if let textFieldsFilledWithValidData = validationBlock?(textFields) {
-						for disableableAction in disableableActions {
-							disableableAction.enabled = textFieldsFilledWithValidData
-						}
+				configurationHandler?(textFields)
+				textFields.last?.delegate = DAAlertController.defaultAlertController
+				if let textFieldsFilledWithValidData = validationBlock?(textFields) {
+					for disableableAction in disableableActions {
+						disableableAction.enabled = textFieldsFilledWithValidData
 					}
 				}
-				if let viewController = viewController {
-					viewController.presentViewController(alertController, animated: true, completion: nil)
-				} else {
-					alertController.show()
-				}
+			}
+			if let viewController = viewController {
+				viewController.presentViewController(alertController, animated: true, completion: nil)
+			} else {
+				alertController.show()
 			}
 		} else {
 			// Fallback on earlier versions
 			assert(numberOfTextFields <= 2, "DAAlertController can only have up to 2 UITextFields on iOS 7")
 			DAAlertController.defaultAlertController.currentAlertView = self.alertView(title: title, message: message, actions: actions)
-			if let alertView = DAAlertController.defaultAlertController.currentAlertView {
-				alertView.validationBlock = validationBlock
-				if numberOfTextFields > 0 {
-					var textFields = Array<UITextField>()
-					switch numberOfTextFields {
-					case 1:
-						alertView.alertViewStyle = .PlainTextInput
-						if let textField = alertView.textFieldAtIndex(0) {
-							textFields.append(textField)
-						}
-					case 2:
-						alertView.alertViewStyle = .LoginAndPasswordInput
-						if let textField = alertView.textFieldAtIndex(0) {
-							textFields.append(textField)
-						}
-						if let textField = alertView.textFieldAtIndex(1) {
-							textFields.append(textField)
-						}
-					default:
-						break
+			guard let alertView = DAAlertController.defaultAlertController.currentAlertView else { return }
+			alertView.validationBlock = validationBlock
+			if numberOfTextFields > 0 {
+				var textFields = Array<UITextField>()
+				switch numberOfTextFields {
+				case 1:
+					alertView.alertViewStyle = .PlainTextInput
+					if let textField = alertView.textFieldAtIndex(0) {
+						textFields.append(textField)
 					}
-					configurationHandler?(textFields)
-					textFields.last?.delegate = DAAlertController.defaultAlertController
+				case 2:
+					alertView.alertViewStyle = .LoginAndPasswordInput
+					if let textField = alertView.textFieldAtIndex(0) {
+						textFields.append(textField)
+					}
+					if let textField = alertView.textFieldAtIndex(1) {
+						textFields.append(textField)
+					}
+				default:
+					break
 				}
-				alertView.show()
+				configurationHandler?(textFields)
+				textFields.last?.delegate = DAAlertController.defaultAlertController
 			}
+			alertView.show()
+		}
+	}
+	
+	public class func dismissAlertController() {
+		if #available(iOS 8.0, *) {
+			DAAlertController.defaultAlertController.currentAlertController?.dismissViewControllerAnimated(true, completion: nil)
+		} else {
+			DAAlertController.defaultAlertController.currentAlertView?.dismissWithClickedButtonIndex(0, animated: true)
+			DAAlertController.defaultAlertController.currentActionSheet?.dismissWithClickedButtonIndex(0, animated: true)
 		}
 	}
 	
@@ -224,6 +234,14 @@ public class DAAlertController: NSObject {
 			DAAlertController.defaultAlertController.currentAlertController?.dismissViewControllerAnimated(true, completion: nil)
 		} else {
 			DAAlertController.defaultAlertController.currentAlertView?.dismissWithClickedButtonIndex(0, animated: true)
+		}
+	}
+	
+	public class func dismissActionSheet() {
+		if #available(iOS 8.0, *) {
+			DAAlertController.defaultAlertController.currentAlertController?.dismissViewControllerAnimated(true, completion: nil)
+		} else {
+			DAAlertController.defaultAlertController.currentActionSheet?.dismissWithClickedButtonIndex(0, animated: true)
 		}
 	}
 	
@@ -448,6 +466,7 @@ extension DAAlertController: UIActionSheetDelegate {
 				}
 			}
 		}
+		currentActionSheet = nil
 	}
 	
 }
