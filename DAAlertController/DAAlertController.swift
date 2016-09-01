@@ -100,6 +100,7 @@ public class DAAlertController: NSObject {
 						} else {
 							action.handler?()
 						}
+						DAAlertController.defaultAlertController.currentAlertController = nil
 					}
 					alertController.addAction(actualAction)
 				}
@@ -220,28 +221,46 @@ public class DAAlertController: NSObject {
 		}
 	}
 	
-	public class func dismissAlertController() {
+	public class func dismissAlertController(animated flag: Bool = true, completion: (() -> Void)? = nil) {
 		if #available(iOS 8.0, *) {
-			DAAlertController.defaultAlertController.currentAlertController?.dismissViewControllerAnimated(true, completion: nil)
+			if let currentAlertController = DAAlertController.defaultAlertController.currentAlertController {
+				currentAlertController.dismissViewControllerAnimated(flag, completion: completion)
+				DAAlertController.defaultAlertController.currentAlertController = nil
+			} else {
+				completion?()
+			}
 		} else {
-			DAAlertController.defaultAlertController.currentAlertView?.dismissWithClickedButtonIndex(0, animated: true)
-			DAAlertController.defaultAlertController.currentActionSheet?.dismissWithClickedButtonIndex(0, animated: true)
+			DAAlertController.defaultAlertController.currentAlertView?.dismissWithClickedButtonIndex(0, animated: flag)
+			DAAlertController.defaultAlertController.currentActionSheet?.dismissWithClickedButtonIndex(0, animated: flag)
+			completion?()
 		}
 	}
 	
-	public class func dismissAlertView() {
+	public class func dismissAlertView(animated flag: Bool = true, completion: (() -> Void)? = nil) {
 		if #available(iOS 8.0, *) {
-			DAAlertController.defaultAlertController.currentAlertController?.dismissViewControllerAnimated(true, completion: nil)
+			if let currentAlertController = DAAlertController.defaultAlertController.currentAlertController {
+				currentAlertController.dismissViewControllerAnimated(flag, completion: completion)
+				DAAlertController.defaultAlertController.currentAlertController = nil
+			} else {
+				completion?()
+			}
 		} else {
-			DAAlertController.defaultAlertController.currentAlertView?.dismissWithClickedButtonIndex(0, animated: true)
+			DAAlertController.defaultAlertController.currentAlertView?.dismissWithClickedButtonIndex(0, animated: flag)
+			completion?()
 		}
 	}
 	
-	public class func dismissActionSheet() {
+	public class func dismissActionSheet(animated flag: Bool = true, completion: (() -> Void)? = nil) {
 		if #available(iOS 8.0, *) {
-			DAAlertController.defaultAlertController.currentAlertController?.dismissViewControllerAnimated(true, completion: nil)
+			if let currentAlertController = DAAlertController.defaultAlertController.currentAlertController {
+				currentAlertController.dismissViewControllerAnimated(flag, completion: completion)
+				DAAlertController.defaultAlertController.currentAlertController = nil
+			} else {
+				completion?()
+			}
 		} else {
-			DAAlertController.defaultAlertController.currentActionSheet?.dismissWithClickedButtonIndex(0, animated: true)
+			DAAlertController.defaultAlertController.currentActionSheet?.dismissWithClickedButtonIndex(0, animated: flag)
+			completion?()
 		}
 	}
 	
