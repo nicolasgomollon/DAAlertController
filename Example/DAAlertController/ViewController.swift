@@ -15,27 +15,27 @@ class ViewController: UIViewController {
 		// Do any additional setup after loading the view, typically from a nib.
 	}
 	
-	override func viewDidAppear(animated: Bool) {
+	override func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(animated)
 		presentAlertController()
 	}
 	
-	func presentAlertController(index: Int = 0) {
+	func presentAlertController(_ index: Int = 0) {
 		if index >= 3 { return }
 		
-		let cancelAction = DAAlertAction(title: "Cancel", style: .Cancel) {
+		let cancelAction = DAAlertAction(title: "Cancel", style: .cancel) {
 			print("\"Cancel\" button pressed.")
 			self.presentAlertController(index + 1)
 		}
-		let signOutAction = DAAlertAction(title: "Sign out", style: .Destructive) {
+		let signOutAction = DAAlertAction(title: "Sign out", style: .destructive) {
 			print("\"Sign out\" button pressed.")
 			self.presentAlertController(index + 1)
 		}
-		let notNowAction = DAAlertAction(title: "Not now", style: .Default) {
+		let notNowAction = DAAlertAction(title: "Not now", style: .default) {
 			print("\"Not now\" button pressed.")
 			self.presentAlertController(index + 1)
 		}
-		let signUpAction = DAAlertFieldAction(title: "Sign up", style: .Default) { (textFields: Array<UITextField>) -> Void in
+		let signUpAction = DAAlertFieldAction(title: "Sign up", style: .default) { (textFields: Array<UITextField>) -> Void in
 			print("\"Sign up\" button pressed.")
 			var i = 0
 			for textField in textFields {
@@ -47,13 +47,13 @@ class ViewController: UIViewController {
 		
 		switch index {
 		case 0:
-			DAAlertController.showAlert(.Alert,
+			DAAlertController.showAlert(.alert,
 				inViewController: self,
 				title: "Are you sure you want to sign out?",
 				message: "If you sign out of your account all photos will be removed from this iPhone.",
 				actions: [cancelAction, signOutAction])
 		case 1:
-			DAAlertController.showAlert(.ActionSheet,
+			DAAlertController.showAlert(.actionSheet,
 				inViewController: self,
 				title: "Are you sure you want to sign out?",
 				message: "If you sign out of your account all photos will be removed from this iPhone.",
@@ -69,7 +69,7 @@ class ViewController: UIViewController {
 					textFields.first?.enablesReturnKeyAutomatically = true
 					textFields.last?.placeholder = "Full name"
 					textFields.last?.enablesReturnKeyAutomatically = true
-					textFields.last?.secureTextEntry = false
+					textFields.last?.isSecureTextEntry = false
 				},
 				validationBlock: { (textFields: Array<UITextField>) -> Bool in
 					return NSString(string: textFields.first?.text ?? "").length >= 5

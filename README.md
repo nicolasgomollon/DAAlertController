@@ -1,9 +1,12 @@
 # DAAlertController
 
-[![CI Status](http://img.shields.io/travis/Daria Kopaliani/DAAlertController.svg?style=flat)](https://travis-ci.org/Daria Kopaliani/DAAlertController)
-[![Version](https://img.shields.io/cocoapods/v/DAAlertController.svg?style=flat)](http://cocoadocs.org/docsets/DAAlertController)
-[![License](https://img.shields.io/cocoapods/l/DAAlertController.svg?style=flat)](http://cocoadocs.org/docsets/DAAlertController)
-[![Platform](https://img.shields.io/cocoapods/p/DAAlertController.svg?style=flat)](http://cocoadocs.org/docsets/DAAlertController)
+---
+
+***Announcement***
+
+*Since Swift 3 supports Xcode 8 and iOS 8 or later, iOS 7 compatibility has been removed, and this project has become semi-obsolete. However, this project may still be used as an easier-to-implement wrapper for `UIAlertController`.*
+
+---
 
 If you are a luckier developer and only target iOS 8+ devices, enjoy the new `UIAlertController`, otherwise check `DAAlertController` out, it’s a real timesaver.  
 `DAAlertController` provides a convenient block-based interface for configuration and presentation of `UIAlertView`s and `UIActionSheet`s. If `UIAlertContoller` is available `DAAlertController` will just pass all the work to it, otherwise it will use associated references (explained in detail later) to invoke action handlers when buttons are clicked just like `UIAlertController` would.
@@ -71,13 +74,6 @@ iOS 8+             |  iOS 7
 :-------------------------:|:-------------------------:
 ![](https://github.com/daria-kopaliani/DAAlertController/blob/master/Screenshots/ActionSheet0iOS8.png)  |  ![](https://github.com/daria-kopaliani/DAAlertController/blob/master/Screenshots/ActionSheet0iOS7.png)
 ![](https://github.com/daria-kopaliani/DAAlertController/blob/master/Screenshots/ActionSheet1iOS8.png)  |  ![](https://github.com/daria-kopaliani/DAAlertController/blob/master/Screenshots/ActionSheet1iOS7.png)
-
-## Installation
-
-DAAlertController is available through [CocoaPods](http://cocoapods.org). To install
-it, simply add the following line to your Podfile:
-
-    pod "DAAlertController"
 
 ## License
 

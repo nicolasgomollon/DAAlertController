@@ -7,32 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		DA1E67761BCB24B300A5F83F /* UIAlertController+Window.m in Sources */ = {isa = PBXBuildFile; fileRef = DA1E67751BCB24B300A5F83F /* UIAlertController+Window.m */; settings = {ASSET_TAGS = (); }; };
 		DAB327CF1AB0B2FA0035C6CA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB327CE1AB0B2FA0035C6CA /* AppDelegate.swift */; };
 		DAB327D11AB0B2FA0035C6CA /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB327D01AB0B2FA0035C6CA /* ViewController.swift */; };
 		DAB327D41AB0B2FA0035C6CA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DAB327D21AB0B2FA0035C6CA /* Main.storyboard */; };
 		DAB327D61AB0B2FA0035C6CA /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DAB327D51AB0B2FA0035C6CA /* Images.xcassets */; };
 		DAB327D91AB0B2FA0035C6CA /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = DAB327D71AB0B2FA0035C6CA /* LaunchScreen.xib */; };
-		DAB327E51AB0B2FA0035C6CA /* DAAlertControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB327E41AB0B2FA0035C6CA /* DAAlertControllerTests.swift */; };
 		DAB327EF1AB0B3730035C6CA /* DAAlertAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB327EE1AB0B3730035C6CA /* DAAlertAction.swift */; };
 		DAB327F11AB0B3C70035C6CA /* DAAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB327F01AB0B3C70035C6CA /* DAAlertController.swift */; };
-		DAB7F9811AB11A8B003D2373 /* ObjC_EXAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = DAB7F9801AB11A8B003D2373 /* ObjC_EXAlertView.m */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		DAB327DF1AB0B2FA0035C6CA /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = DAB327C11AB0B2FA0035C6CA /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = DAB327C81AB0B2FA0035C6CA;
-			remoteInfo = DAAlertController;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
-		DA1E67741BCB24B300A5F83F /* UIAlertController+Window.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIAlertController+Window.h"; path = "../DAAlertController/UIAlertController+Window.h"; sourceTree = "<group>"; };
-		DA1E67751BCB24B300A5F83F /* UIAlertController+Window.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIAlertController+Window.m"; path = "../DAAlertController/UIAlertController+Window.m"; sourceTree = "<group>"; };
-		DAAAE5EE1AB154D60093D91E /* DAAlertController-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "DAAlertController-Bridging-Header.h"; path = "../DAAlertController/DAAlertController-Bridging-Header.h"; sourceTree = "<group>"; };
 		DAB327C91AB0B2FA0035C6CA /* DAAlertController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DAAlertController.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAB327CD1AB0B2FA0035C6CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DAB327CE1AB0B2FA0035C6CA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -40,24 +24,12 @@
 		DAB327D31AB0B2FA0035C6CA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DAB327D51AB0B2FA0035C6CA /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		DAB327D81AB0B2FA0035C6CA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		DAB327DE1AB0B2FA0035C6CA /* DAAlertControllerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DAAlertControllerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		DAB327E31AB0B2FA0035C6CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DAB327E41AB0B2FA0035C6CA /* DAAlertControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DAAlertControllerTests.swift; sourceTree = "<group>"; };
 		DAB327EE1AB0B3730035C6CA /* DAAlertAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DAAlertAction.swift; path = ../DAAlertController/DAAlertAction.swift; sourceTree = "<group>"; };
 		DAB327F01AB0B3C70035C6CA /* DAAlertController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DAAlertController.swift; path = ../DAAlertController/DAAlertController.swift; sourceTree = "<group>"; };
-		DAB7F97F1AB11A8B003D2373 /* ObjC_EXAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ObjC_EXAlertView.h; path = ../DAAlertController/ObjC_EXAlertView.h; sourceTree = "<group>"; };
-		DAB7F9801AB11A8B003D2373 /* ObjC_EXAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ObjC_EXAlertView.m; path = ../DAAlertController/ObjC_EXAlertView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		DAB327C61AB0B2FA0035C6CA /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		DAB327DB1AB0B2FA0035C6CA /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -72,7 +44,6 @@
 			children = (
 				DAB327F21AB0B3CF0035C6CA /* DAAlertController */,
 				DAB327CB1AB0B2FA0035C6CA /* Example */,
-				DAB327E11AB0B2FA0035C6CA /* DAAlertControllerTests */,
 				DAB327CA1AB0B2FA0035C6CA /* Products */,
 			);
 			sourceTree = "<group>";
@@ -81,7 +52,6 @@
 			isa = PBXGroup;
 			children = (
 				DAB327C91AB0B2FA0035C6CA /* DAAlertController.app */,
-				DAB327DE1AB0B2FA0035C6CA /* DAAlertControllerTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -108,33 +78,11 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		DAB327E11AB0B2FA0035C6CA /* DAAlertControllerTests */ = {
-			isa = PBXGroup;
-			children = (
-				DAB327E41AB0B2FA0035C6CA /* DAAlertControllerTests.swift */,
-				DAB327E21AB0B2FA0035C6CA /* Supporting Files */,
-			);
-			path = DAAlertControllerTests;
-			sourceTree = "<group>";
-		};
-		DAB327E21AB0B2FA0035C6CA /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				DAB327E31AB0B2FA0035C6CA /* Info.plist */,
-			);
-			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
 		DAB327F21AB0B3CF0035C6CA /* DAAlertController */ = {
 			isa = PBXGroup;
 			children = (
 				DAB327EE1AB0B3730035C6CA /* DAAlertAction.swift */,
 				DAB327F01AB0B3C70035C6CA /* DAAlertController.swift */,
-				DAAAE5EE1AB154D60093D91E /* DAAlertController-Bridging-Header.h */,
-				DAB7F97F1AB11A8B003D2373 /* ObjC_EXAlertView.h */,
-				DAB7F9801AB11A8B003D2373 /* ObjC_EXAlertView.m */,
-				DA1E67741BCB24B300A5F83F /* UIAlertController+Window.h */,
-				DA1E67751BCB24B300A5F83F /* UIAlertController+Window.m */,
 			);
 			name = DAAlertController;
 			sourceTree = "<group>";
@@ -159,24 +107,6 @@
 			productReference = DAB327C91AB0B2FA0035C6CA /* DAAlertController.app */;
 			productType = "com.apple.product-type.application";
 		};
-		DAB327DD1AB0B2FA0035C6CA /* DAAlertControllerTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = DAB327EB1AB0B2FA0035C6CA /* Build configuration list for PBXNativeTarget "DAAlertControllerTests" */;
-			buildPhases = (
-				DAB327DA1AB0B2FA0035C6CA /* Sources */,
-				DAB327DB1AB0B2FA0035C6CA /* Frameworks */,
-				DAB327DC1AB0B2FA0035C6CA /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				DAB327E01AB0B2FA0035C6CA /* PBXTargetDependency */,
-			);
-			name = DAAlertControllerTests;
-			productName = DAAlertControllerTests;
-			productReference = DAB327DE1AB0B2FA0035C6CA /* DAAlertControllerTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -185,15 +115,12 @@
 			attributes = {
 				LastSwiftMigration = 0700;
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "Techno-Magic";
 				TargetAttributes = {
 					DAB327C81AB0B2FA0035C6CA = {
 						CreatedOnToolsVersion = 6.2;
-					};
-					DAB327DD1AB0B2FA0035C6CA = {
-						CreatedOnToolsVersion = 6.2;
-						TestTargetID = DAB327C81AB0B2FA0035C6CA;
+						LastSwiftMigration = 0800;
 					};
 				};
 			};
@@ -211,7 +138,6 @@
 			projectRoot = "";
 			targets = (
 				DAB327C81AB0B2FA0035C6CA /* DAAlertController */,
-				DAB327DD1AB0B2FA0035C6CA /* DAAlertControllerTests */,
 			);
 		};
 /* End PBXProject section */
@@ -227,13 +153,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		DAB327DC1AB0B2FA0035C6CA /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -243,30 +162,12 @@
 			files = (
 				DAB327EF1AB0B3730035C6CA /* DAAlertAction.swift in Sources */,
 				DAB327D11AB0B2FA0035C6CA /* ViewController.swift in Sources */,
-				DA1E67761BCB24B300A5F83F /* UIAlertController+Window.m in Sources */,
-				DAB7F9811AB11A8B003D2373 /* ObjC_EXAlertView.m in Sources */,
 				DAB327CF1AB0B2FA0035C6CA /* AppDelegate.swift in Sources */,
 				DAB327F11AB0B3C70035C6CA /* DAAlertController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		DAB327DA1AB0B2FA0035C6CA /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				DAB327E51AB0B2FA0035C6CA /* DAAlertControllerTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		DAB327E01AB0B2FA0035C6CA /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = DAB327C81AB0B2FA0035C6CA /* DAAlertController */;
-			targetProxy = DAB327DF1AB0B2FA0035C6CA /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		DAB327D21AB0B2FA0035C6CA /* Main.storyboard */ = {
@@ -301,8 +202,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -311,6 +214,7 @@
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -323,7 +227,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -345,8 +249,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -354,15 +260,17 @@
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				USER_HEADER_SEARCH_PATHS = ../DAAlertController/;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -371,69 +279,35 @@
 		DAB327E91AB0B2FA0035C6CA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = DAAlertController/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.nicolasgomollon.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "../DAAlertController/DAAlertController-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
 		DAB327EA1AB0B2FA0035C6CA /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = DAAlertController/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.nicolasgomollon.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "../DAAlertController/DAAlertController-Bridging-Header.h";
-			};
-			name = Release;
-		};
-		DAB327EC1AB0B2FA0035C6CA /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = DAAlertControllerTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.nicolasgomollon.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DAAlertController.app/DAAlertController";
-			};
-			name = Debug;
-		};
-		DAB327ED1AB0B2FA0035C6CA /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = DAAlertControllerTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.nicolasgomollon.$(PRODUCT_NAME:rfc1034identifier)";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DAAlertController.app/DAAlertController";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -454,15 +328,6 @@
 			buildConfigurations = (
 				DAB327E91AB0B2FA0035C6CA /* Debug */,
 				DAB327EA1AB0B2FA0035C6CA /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		DAB327EB1AB0B2FA0035C6CA /* Build configuration list for PBXNativeTarget "DAAlertControllerTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				DAB327EC1AB0B2FA0035C6CA /* Debug */,
-				DAB327ED1AB0B2FA0035C6CA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

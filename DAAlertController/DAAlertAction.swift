@@ -7,22 +7,16 @@
 //
 
 import Foundation
-
-@objc
-public enum DAAlertActionStyle: Int {
-	case Default
-	case Cancel
-	case Destructive
-}
+import UIKit
 
 @objc(DAAlertAction)
-public class DAAlertAction: NSObject {
+open class DAAlertAction: NSObject {
 	
-	public var title: String
-	public var style: DAAlertActionStyle
-	public var handler: (() -> Void)?
+	open var title: String?
+	open var style: UIAlertActionStyle
+	open var handler: (() -> Void)?
 	
-	public init(title: String, style: DAAlertActionStyle, handler: (() -> Void)? = nil) {
+	public init(title: String?, style: UIAlertActionStyle, handler: (() -> Void)? = nil) {
 		self.title = title
 		self.style = style
 		self.handler = handler
@@ -33,18 +27,18 @@ public class DAAlertAction: NSObject {
 
 extension DAAlertAction: NSCopying {
 	
-	public func copyWithZone(zone: NSZone) -> AnyObject {
+	public func copy(with zone: NSZone?) -> Any {
 		return DAAlertAction(title: title, style: style, handler: handler)
 	}
 	
 }
 
 @objc(DAAlertFieldAction)
-public class DAAlertFieldAction: DAAlertAction {
+open class DAAlertFieldAction: DAAlertAction {
 	
-	public var textFieldHandler: ((Array<UITextField>) -> Void)?
+	open var textFieldHandler: ((Array<UITextField>) -> Void)?
 	
-	public init(title: String, style: DAAlertActionStyle, textFieldHandler: ((Array<UITextField>) -> Void)? = nil) {
+	public init(title: String?, style: UIAlertActionStyle, textFieldHandler: ((Array<UITextField>) -> Void)? = nil) {
 		self.textFieldHandler = textFieldHandler
 		super.init(title: title, style: style)
 	}
