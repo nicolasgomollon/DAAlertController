@@ -39,7 +39,7 @@ class ViewController: UIViewController {
 			print("\"Sign up\" button pressed.")
 			var i = 0
 			for textField in textFields {
-				print("\(i): \"\(textField.text)\"")
+				print("\(i): \"\(textField.text ?? "")\"")
 				i += 1
 			}
 			self.presentAlertController(index + 1)
