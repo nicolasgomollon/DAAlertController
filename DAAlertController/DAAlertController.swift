@@ -46,6 +46,8 @@ open class DAAlertController: NSObject {
 			showAlertView(viewController, title: title, message: message, actions: actions)
 		case .actionSheet:
 			showActionSheet(viewController, title: title, message: message, actions: actions)
+		@unknown default:
+			break
 		}
 	}
 	
