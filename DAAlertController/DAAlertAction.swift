@@ -13,10 +13,10 @@ import UIKit
 open class DAAlertAction: NSObject {
 	
 	open var title: String?
-	open var style: UIAlertActionStyle
+	open var style: UIAlertAction.Style
 	open var handler: (() -> Void)?
 	
-	public init(title: String?, style: UIAlertActionStyle, handler: (() -> Void)? = nil) {
+	public init(title: String?, style: UIAlertAction.Style, handler: (() -> Void)? = nil) {
 		self.title = title
 		self.style = style
 		self.handler = handler
@@ -38,7 +38,7 @@ open class DAAlertFieldAction: DAAlertAction {
 	
 	open var textFieldHandler: ((Array<UITextField>) -> Void)?
 	
-	public init(title: String?, style: UIAlertActionStyle, textFieldHandler: ((Array<UITextField>) -> Void)? = nil) {
+	public init(title: String?, style: UIAlertAction.Style, textFieldHandler: ((Array<UITextField>) -> Void)? = nil) {
 		self.textFieldHandler = textFieldHandler
 		super.init(title: title, style: style)
 	}

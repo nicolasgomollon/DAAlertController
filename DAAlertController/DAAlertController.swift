@@ -20,7 +20,7 @@ public class EXAlertController: UIAlertController {
 		guard let alertWindow = alertWindow else { return }
 		let rootViewController = UIViewController()
 		alertWindow.rootViewController = rootViewController
-		alertWindow.windowLevel = UIWindowLevelAlert + 1
+		alertWindow.windowLevel = UIWindow.Level.alert + 1
 		alertWindow.makeKeyAndVisible()
 		rootViewController.present(self, animated: animated, completion: nil)
 	}
@@ -40,7 +40,7 @@ open class DAAlertController: NSObject {
 	open var current: EXAlertController?
 	
 	
-	open class func showAlert(_ style: UIAlertControllerStyle, inViewController viewController: UIViewController, title: String?, message: String?, actions: Array<DAAlertAction>?) {
+	open class func showAlert(_ style: UIAlertController.Style, inViewController viewController: UIViewController, title: String?, message: String?, actions: Array<DAAlertAction>?) {
 		switch style {
 		case .alert:
 			showAlertView(viewController, title: title, message: message, actions: actions)
@@ -54,7 +54,7 @@ open class DAAlertController: NSObject {
 		guard let alertController = DAAlertController.default.current else { return }
 		if let actions = actions {
 			for action in actions {
-				let actualAction = UIAlertAction(title: action.title, style: UIAlertActionStyle(rawValue: action.style.rawValue)!) { (anAction: UIAlertAction) -> Void in
+				let actualAction = UIAlertAction(title: action.title, style: UIAlertAction.Style(rawValue: action.style.rawValue)!) { (anAction: UIAlertAction) -> Void in
 					if let action = action as? DAAlertFieldAction {
 						action.textFieldHandler?(Array<UITextField>())
 					} else {
@@ -87,7 +87,7 @@ open class DAAlertController: NSObject {
 		var textFields = Array<UITextField>()
 		if let actions = actions {
 			for action in actions {
-				let actualAction = UIAlertAction(title: action.title, style: UIAlertActionStyle(rawValue: action.style.rawValue)!) { (anAction: UIAlertAction) -> Void in
+				let actualAction = UIAlertAction(title: action.title, style: UIAlertAction.Style(rawValue: action.style.rawValue)!) { (anAction: UIAlertAction) -> Void in
 					if observers.count > 0 {
 						for observer in observers {
 							NotificationCenter.default.removeObserver(observer)
@@ -111,7 +111,7 @@ open class DAAlertController: NSObject {
 			for _ in 0..<numberOfTextFields {
 				alertController.addTextField { (aTextField: UITextField!) -> Void in
 					textFields.append(aTextField)
-					let observer = NotificationCenter.default.addObserver(forName: .UITextFieldTextDidChange, object: aTextField, queue: OperationQueue.main) { (notification: Notification) -> Void in
+					let observer = NotificationCenter.default.addObserver(forName: UITextField.textDidChangeNotification, object: aTextField, queue: OperationQueue.main) { (notification: Notification) -> Void in
 						if let textFieldsFilledWithValidData = validationBlock?(textFields) {
 							for disableableAction in disableableActions {
 								disableableAction.isEnabled = textFieldsFilledWithValidData
