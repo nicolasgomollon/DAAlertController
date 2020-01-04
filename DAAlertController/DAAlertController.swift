@@ -13,7 +13,7 @@ import UIKit
 public class EXAlertController: UIAlertController {
 	
 	open var alertWindow: UIWindow?
-	open var validationBlock: ((Array<UITextField>) -> Bool)?
+	open var validationBlock: (([UITextField]) -> Bool)?
 	
 	open func show(_ animated: Bool = true) {
 		alertWindow = UIWindow(frame: UIScreen.main.bounds)
@@ -35,7 +35,7 @@ open class DAAlertController: NSObject {
 	open var current: EXAlertController?
 	
 	
-	open class func showAlert(_ style: UIAlertController.Style, inViewController viewController: UIViewController, title: String?, message: String?, actions: Array<DAAlertAction>?) {
+	open class func showAlert(_ style: UIAlertController.Style, inViewController viewController: UIViewController, title: String?, message: String?, actions: [DAAlertAction]?) {
 		switch style {
 		case .alert:
 			showAlertView(viewController, title: title, message: message, actions: actions)
@@ -46,14 +46,14 @@ open class DAAlertController: NSObject {
 		}
 	}
 	
-	open class func showActionSheet(_ viewController: UIViewController, sourceView: UIView? = nil, barButtonItem: UIBarButtonItem? = nil, title: String?, message: String?, actions: Array<DAAlertAction>?, permittedArrowDirections: UIPopoverArrowDirection = .any) {
+	open class func showActionSheet(_ viewController: UIViewController, sourceView: UIView? = nil, barButtonItem: UIBarButtonItem? = nil, title: String?, message: String?, actions: [DAAlertAction]?, permittedArrowDirections: UIPopoverArrowDirection = .any) {
 		DAAlertController.default.current = EXAlertController(title: title, message: message, preferredStyle: .actionSheet)
 		guard let alertController: EXAlertController = DAAlertController.default.current else { return }
-		if let actions: Array<DAAlertAction> = actions {
+		if let actions: [DAAlertAction] = actions {
 			for action in actions {
 				let actualAction: UIAlertAction = UIAlertAction(title: action.title, style: UIAlertAction.Style(rawValue: action.style.rawValue)!) { (anAction: UIAlertAction) in
 					if let action: DAAlertFieldAction = action as? DAAlertFieldAction {
-						action.textFieldHandler?(Array<UITextField>())
+						action.textFieldHandler?([])
 					} else {
 						action.handler?()
 					}
@@ -75,14 +75,14 @@ open class DAAlertController: NSObject {
 		viewController.present(alertController, animated: true, completion: nil)
 	}
 	
-	open class func showAlertView(_ viewController: UIViewController? = nil, title: String?, message: String?, actions: Array<DAAlertAction>?, numberOfTextFields: Int = 0, textFieldsConfigurationHandler configurationHandler: ((Array<UITextField>) -> Void)? = nil, validationBlock: ((Array<UITextField>) -> Bool)? = nil) {
+	open class func showAlertView(_ viewController: UIViewController? = nil, title: String?, message: String?, actions: [DAAlertAction]?, numberOfTextFields: Int = 0, textFieldsConfigurationHandler configurationHandler: (([UITextField]) -> Void)? = nil, validationBlock: (([UITextField]) -> Bool)? = nil) {
 		DAAlertController.default.current = EXAlertController(title: title, message: message, preferredStyle: .alert)
 		guard let alertController: EXAlertController = DAAlertController.default.current else { return }
 		alertController.validationBlock = validationBlock
 		var disableableActions: Set<UIAlertAction> = .init()
 		let observers: NSMutableSet = .init()
-		var textFields: Array<UITextField> = .init()
-		if let actions: Array<DAAlertAction> = actions {
+		var textFields: [UITextField] = []
+		if let actions: [DAAlertAction] = actions {
 			for action in actions {
 				let actualAction: UIAlertAction = UIAlertAction(title: action.title, style: UIAlertAction.Style(rawValue: action.style.rawValue)!) { (anAction: UIAlertAction) in
 					if observers.count > 0 {
@@ -147,8 +147,8 @@ extension DAAlertController: UITextFieldDelegate {
 	
 	public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
 		guard let currentAlertController: EXAlertController = current,
-			let textFields: Array<UITextField> = currentAlertController.textFields,
-			let validationBlock: (Array<UITextField>) -> Bool = currentAlertController.validationBlock else { return true }
+			let textFields: [UITextField] = currentAlertController.textFields,
+			let validationBlock: ([UITextField]) -> Bool = currentAlertController.validationBlock else { return true }
 		return validationBlock(textFields)
 	}
 	

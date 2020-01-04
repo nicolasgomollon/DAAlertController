@@ -36,9 +36,9 @@ extension DAAlertAction: NSCopying {
 @objc(DAAlertFieldAction)
 open class DAAlertFieldAction: DAAlertAction {
 	
-	open var textFieldHandler: ((Array<UITextField>) -> Void)?
+	open var textFieldHandler: (([UITextField]) -> Void)?
 	
-	public init(title: String?, style: UIAlertAction.Style, textFieldHandler: ((Array<UITextField>) -> Void)? = nil) {
+	public init(title: String?, style: UIAlertAction.Style, textFieldHandler: (([UITextField]) -> Void)? = nil) {
 		self.textFieldHandler = textFieldHandler
 		super.init(title: title, style: style)
 	}
