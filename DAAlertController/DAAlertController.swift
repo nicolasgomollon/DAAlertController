@@ -51,15 +51,17 @@ open class DAAlertController: NSObject {
 		guard let alertController: EXAlertController = DAAlertController.default.current else { return }
 		if let actions: [DAAlertAction] = actions {
 			for action in actions {
-				let actualAction: UIAlertAction = UIAlertAction(title: action.title, style: UIAlertAction.Style(rawValue: action.style.rawValue)!) { (anAction: UIAlertAction) in
-					if let action: DAAlertFieldAction = action as? DAAlertFieldAction {
-						action.textFieldHandler?([])
-					} else {
-						action.handler?()
-					}
+				let postHandler: () -> Void = {
 					DAAlertController.default.current = nil
 				}
-				alertController.addAction(actualAction)
+				let alertAction: UIAlertAction
+				switch action {
+				case let action as DAAlertFieldAction:
+					alertAction = action.generateAlertAction(textFields: { [] }, preHandler: nil, postHandler: postHandler)
+				default:
+					alertAction = action.generateAlertAction(preHandler: nil, postHandler: postHandler)
+				}
+				alertController.addAction(alertAction)
 			}
 		}
 		alertController.modalPresentationStyle = .popover
@@ -84,24 +86,28 @@ open class DAAlertController: NSObject {
 		var textFields: [UITextField] = []
 		if let actions: [DAAlertAction] = actions {
 			for action in actions {
-				let actualAction: UIAlertAction = UIAlertAction(title: action.title, style: UIAlertAction.Style(rawValue: action.style.rawValue)!) { (anAction: UIAlertAction) in
+				let preHandler: () -> Void = {
 					if observers.count > 0 {
 						for observer in observers {
 							NotificationCenter.default.removeObserver(observer)
 						}
 						observers.removeAllObjects()
 					}
-					if let action: DAAlertFieldAction = action as? DAAlertFieldAction {
-						action.textFieldHandler?(textFields)
-					} else {
-						action.handler?()
-					}
+				}
+				let postHandler: () -> Void = {
 					DAAlertController.default.current = nil
 				}
-				if (validationBlock != nil) && (action.style != .cancel) {
-					disableableActions.insert(actualAction)
+				let alertAction: UIAlertAction
+				switch action {
+				case let action as DAAlertFieldAction:
+					alertAction = action.generateAlertAction(textFields: { textFields }, preHandler: preHandler, postHandler: postHandler)
+				default:
+					alertAction = action.generateAlertAction(preHandler: preHandler, postHandler: postHandler)
 				}
-				alertController.addAction(actualAction)
+				if (validationBlock != nil) && (action.style != .cancel) {
+					disableableActions.insert(alertAction)
+				}
+				alertController.addAction(alertAction)
 			}
 		}
 		if numberOfTextFields > 0 {
